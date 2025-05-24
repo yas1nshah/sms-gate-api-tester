@@ -31,17 +31,22 @@ npm install android-sms-gateway lucide-react
 
 ## Usage
 
-### Component
+### How to use in your Next.js app
+Import the server actions (sendCloudSMS, sendLocalSMS) into your page.
 
-Import and use the component in your React/Next.js app:
+Use them inside client components by calling the async server action functions to send SMS.
 
-```tsx
-import SMSApiTester from "./path-to/SMSApiTester";
+Use the provided SMSApiTester component or create your own page that uses these server actions.
 
-export default function Page() {
-  return <SMSApiTester />;
-}
-```
+---
+
+### Notes
+
+* `sendCloudSMS` and `sendLocalSMS` are server actions exported from your server code.
+* Client components can call these server actions via async functions.
+* Use React state and UI to manage form inputs and display responses.
+* This approach helps avoid CORS issues by running API calls server-side.
+
 
 ---
 
