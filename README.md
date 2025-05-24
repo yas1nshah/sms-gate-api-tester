@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Sure! Here’s a clean and clear README file for your SMS sending component:
 
-## Getting Started
+---
 
-First, run the development server:
+# SMS API Tester Component
+
+A React component with server actions to send SMS messages via either a **cloud SMS gateway** using the [`android-sms-gateway`](https://www.npmjs.com/package/android-sms-gateway) library or a **local SMS gateway API** with Basic Auth.
+
+---
+
+## Features
+
+* Toggle between **Cloud SMS API** and **Local SMS API** modes.
+* Enter credentials (username/password) directly in the UI.
+* Customize the local API endpoint URL.
+* Send SMS messages to multiple phone numbers.
+* Server-side API calls eliminate CORS issues.
+* Uses Shadcn/UI components for a clean and accessible UI.
+* Displays live success/error responses.
+* Loading state feedback with spinner icon.
+
+---
+
+## Installation
+
+1. Install dependencies (if not already):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install android-sms-gateway lucide-react
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Ensure you have the Shadcn/UI components installed or adjust imports accordingly.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+### Component
 
-To learn more about Next.js, take a look at the following resources:
+Import and use the component in your React/Next.js app:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```tsx
+import SMSApiTester from "./path-to/SMSApiTester";
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+export default function Page() {
+  return <SMSApiTester />;
+}
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Server Actions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* **Cloud SMS**: Uses `android-sms-gateway` client with basic auth internally.
+* **Local SMS**: Sends a POST request with basic auth header to your local API.
+
+Make sure your server supports server actions (Next.js 13+ app directory recommended).
+
+---
+
+## Props
+
+This component manages all state internally and does not accept any props.
+
+---
+
+## How it Works
+
+1. **Toggle mode** to select cloud or local SMS API.
+2. Fill in **username** and **password** credentials.
+3. If local, enter your local API endpoint URL.
+4. Enter **one or more phone numbers** to send SMS to.
+5. Enter the **SMS message text**.
+6. Click **Send SMS**.
+7. See success or error response below the form.
+
+---
+
+## Notes
+
+* This component uses server actions (`"use server"`) for API calls to avoid CORS issues.
+* Cloud SMS mode relies on the `android-sms-gateway` npm package.
+* Local SMS mode expects a REST API endpoint that accepts POST with Basic Auth and JSON `{ phoneNumbers, message }`.
+* Adjust styles or imports if you are not using Shadcn/UI.
+
+---
+
+## License
+
+MIT
+
+---
+
+If you want me to help with deploying or customizing this component further, just ask!
