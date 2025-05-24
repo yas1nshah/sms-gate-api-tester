@@ -1,7 +1,3 @@
-Sure! Here’s a clean and clear README file for your SMS sending component:
-
----
-
 # SMS API Tester Component
 
 A React component with server actions to send SMS messages via either a **cloud SMS gateway** using the [`android-sms-gateway`](https://www.npmjs.com/package/android-sms-gateway) library or a **local SMS gateway API** with Basic Auth.
